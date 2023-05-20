@@ -2,6 +2,8 @@ package de.zonlykroks.polyroots;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 public class Equation<T> {
@@ -37,13 +39,11 @@ public class Equation<T> {
     }
 
     public T evaluate(T x) {
-        final T[] temp = (T[]) new Object[]{operations.zero()};
+        AtomicReference<T> atomicReference = new AtomicReference<>(operations.zero());
 
-        equationParts.forEach(tPart -> {
-            temp[0] = operations.plus(temp[0],tPart.evaluate(x));
-        });
+        equationParts.forEach(tPart -> atomicReference.getAndUpdate((v) -> tPart.evaluate(x)));
 
-        return temp[0];
+        return atomicReference.get();
     }
 
     public List<T> newtonRaphonAll(T initial, int iterationCount) {

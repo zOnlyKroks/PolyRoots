@@ -102,16 +102,20 @@ public class Main {
         Equation<Double> equation = new Equation<>(
                 List.of(
                         new EPart<>(
-                                -1.0,
+                                1.0,
                                 false,
-                                -2.0,
+                                1.0,
                                 false,
                                 0.0,
-                                1.0,
+                                0.0,
                                 operations
                         )
                 ),operations
         );
+
+        System.out.println(equation);
+        System.out.println(equation.integrate());
+        System.out.println(equation.integrate().evaluate(1.0));
     }
 
 }

@@ -68,6 +68,16 @@ public class Main {
         }
 
         @Override
+        public Double tan(Double a) {
+            return Math.tan(a);
+        }
+
+        @Override
+        public Double E() {
+            return Math.E;
+        }
+
+        @Override
         public boolean isNegative(Double a) {
             return a < 0;
         }
@@ -80,17 +90,36 @@ public class Main {
         @Override
         public boolean isZero(Double a) {
             return a == 0;
-        }};
+        }
+
+        @Override
+        public boolean isPositiveOne(Double a) {
+            return a == 1.0;
+        }
+    };
 
     public static void main(String[] args) {
         Equation<Double> equation = new Equation<>(
                 List.of(
-                        new SinFunction<>(operations,false)
+                        new PolyPart<>(
+                                  1.0,
+                                1.0,
+                                1.0,
+                                operations
+                        ),
+                        new EPart<>(
+                                1.0,
+                                true,
+                                1.0,
+                                true,
+                                1.0,
+                                1.0,
+                                operations
+                        )
                 ),operations
         );
 
         System.out.println(equation);
-        System.out.println(equation.differentiate());
     }
 
 }

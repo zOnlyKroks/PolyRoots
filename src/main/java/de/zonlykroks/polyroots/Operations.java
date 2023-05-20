@@ -23,9 +23,15 @@ public interface Operations<T> {
 
     T cos(T a);
 
+    T tan(T a);
+
+    T E();
+
     boolean isNegative(T a);
 
     double toDouble(T a);
 
     boolean isZero(T a);
+
+    boolean isPositiveOne(T a);
 }

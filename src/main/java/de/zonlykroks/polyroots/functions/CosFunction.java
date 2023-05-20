@@ -23,7 +23,7 @@ public class CosFunction<T> implements Part<T> {
 
     @Override
     public List<Part<T>> integrate() {
-        return null;
+        return Collections.singletonList(new SinFunction<>(operations,isNegative));
     }
 
     @Override

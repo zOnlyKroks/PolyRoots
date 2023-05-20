@@ -6,29 +6,29 @@ import de.zonlykroks.polyroots.Part;
 import java.util.Collections;
 import java.util.List;
 
-public class SinFunction<T> implements Part<T> {
+public class TanFunction <T> implements Part<T> {
 
     private Operations<T> operations;
     public boolean isNegative;
 
-    public SinFunction(Operations<T> operations,boolean isNegative) {
+    public TanFunction(Operations<T> operations,boolean isNegative) {
         this.operations = operations;
         this.isNegative = isNegative;
     }
 
     @Override
     public List<Part<T>> differentiate() {
-        return Collections.singletonList(new CosFunction<>(operations, isNegative));
+        return null;
     }
 
     @Override
     public List<Part<T>> integrate() {
-        return Collections.singletonList(new CosFunction<>(operations,!isNegative));
+        return null;
     }
 
     @Override
     public T evaluate(T a) {
-        return operations.multiply(isNegative ? operations.negativeOne() : operations.one(), operations.sin(a));
+        return operations.multiply(isNegative ? operations.negativeOne() : operations.one(), operations.tan(a));
     }
 
     @Override
@@ -38,6 +38,6 @@ public class SinFunction<T> implements Part<T> {
 
     @Override
     public String toString() {
-        return (isNegative ? "-" : "") + "sin(x) #";
+        return (isNegative ? "-" : "") + "tan(x) #";
     }
 }

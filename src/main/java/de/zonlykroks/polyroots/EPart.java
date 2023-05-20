@@ -33,7 +33,20 @@ public class EPart<T> implements Part<T>{
 
     @Override
     public List<Part<T>> differentiate() {
-        return null;
+        T temp = operations.multiply(yStauchStreck,flipY);
+        temp =operations.multiply(temp,xStauchStreck);
+
+        EPart<T> ePart = new EPart<>(
+                temp,
+                operations.isNegative(flipX),
+                xStauchStreck,
+                operations.isNegative(flipY),
+                xVerschiebung,
+                operations.zero(),
+                operations
+        );
+
+        return List.of(ePart);
     }
 
     @Override

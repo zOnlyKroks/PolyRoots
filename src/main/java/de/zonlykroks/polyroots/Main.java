@@ -101,25 +101,17 @@ public class Main {
     public static void main(String[] args) {
         Equation<Double> equation = new Equation<>(
                 List.of(
-                        new PolyPart<>(
-                                  1.0,
-                                1.0,
-                                1.0,
-                                operations
-                        ),
                         new EPart<>(
-                                1.0,
-                                true,
-                                1.0,
-                                true,
-                                1.0,
+                                -1.0,
+                                false,
+                                -2.0,
+                                false,
+                                0.0,
                                 1.0,
                                 operations
                         )
                 ),operations
         );
-
-        System.out.println(equation);
     }
 
 }

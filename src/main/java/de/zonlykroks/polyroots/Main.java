@@ -1,5 +1,7 @@
 package de.zonlykroks.polyroots;
 
+import de.zonlykroks.polyroots.functions.SinFunction;
+
 import java.util.List;
 
 public class Main {
@@ -11,6 +13,11 @@ public class Main {
         }
 
         @Override
+        public Double negativeOne() {
+            return -1.0;
+        }
+
+        @Override
         public Double zero() {
             return 0.0;
         }
@@ -18,11 +25,6 @@ public class Main {
         @Override
         public Double epsilon() {
             return 1.0;
-        }
-
-        @Override
-        public Double oneHundred() {
-            return 100.0;
         }
 
         @Override
@@ -56,8 +58,13 @@ public class Main {
         }
 
         @Override
-        public boolean greaterThan(Double a, Double b) {
-            return a > b;
+        public Double sin(Double a) {
+            return Math.sin(a);
+        }
+
+        @Override
+        public Double cos(Double a) {
+            return Math.cos(a);
         }
 
         @Override
@@ -78,29 +85,12 @@ public class Main {
     public static void main(String[] args) {
         Equation<Double> equation = new Equation<>(
                 List.of(
-                        new PolyPart<>(1.0,
-                                1.0,
-                                1.0,
-                                operations),
-                        new PolyPart<>(2.0,
-                                2.0,
-                                2.0,
-                                operations),
-                        new PolyPart<>(-2.0,
-                                0.0,
-                                6.0,
-                                operations),
-                        new PolyPart<>(6.0,
-                                3.0,
-                                7.0,
-                                operations)
+                        new SinFunction<>(operations,false)
                 ),operations
         );
 
         System.out.println(equation);
         System.out.println(equation.differentiate());
-        System.out.println(equation.integrate());
-        System.out.println(equation.newtonRaphonAll(0.0,100));
     }
 
 }

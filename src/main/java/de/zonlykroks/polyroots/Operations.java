@@ -4,11 +4,12 @@ public interface Operations<T> {
 
     T one();
 
+    T negativeOne();
+
     T zero();
 
     T epsilon();
 
-    T oneHundred();
     T plus(T a, T b);
     T minus(T a, T b);
     T multiply(T a, T b);
@@ -18,7 +19,9 @@ public interface Operations<T> {
 
     T abs(T a);
 
-    boolean greaterThan(T a, T b);
+    T sin(T a);
+
+    T cos(T a);
 
     boolean isNegative(T a);
 
